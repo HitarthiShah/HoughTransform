@@ -13,5 +13,17 @@ public class ImageProcessing {
 	public void loadImage() {
 		
 	}
+	
+	public int getNumRows() { return numRows; }
+	
+	public int getNumCols() { return numCols; }
+	
+	public int getMinVal() { return minVal; }
+	
+	public int getMaxVal() { return maxVal; }
+	
+	public int getImgArrVal(int rowIndex, int colIndex) {
+		return imgAry[rowIndex][colIndex];
+	}
 
 }
