@@ -1,3 +1,5 @@
+import java.io.*;
+import java.util.Scanner;
 
 public class ImageProcessing {
 	private int numRows;
@@ -6,12 +8,39 @@ public class ImageProcessing {
 	private int maxVal;
 	private int[][] imgAry;
 	
-	public ImageProcessing() {
-		
+	public ImageProcessing(String inputFile) {
+		try {
+			Scanner readInput = new Scanner(new File(inputFile));
+			numRows = readInput.nextInt();
+			numCols = readInput.nextInt();
+			minVal  = readInput.nextInt();
+			maxVal  = readInput.nextInt();
+			imgAry = new int[numRows][numCols];
+			readInput.close();
+		} catch(IOException ioe) {
+			System.out.println(ioe);
+		}
 	}
 	
-	public void loadImage() {
-		
+	public void loadImage(String inputFile) {
+		int pixel = -1;
+		try{
+			Scanner readInput = new Scanner(new File(inputFile));
+			
+			//To skip the header
+			for(int i = 0; i < 4; ++i)
+				pixel = readInput.nextInt();
+			
+			for(int i = 0; i < numRows; ++i) {
+				for(int j = 0; j < numCols; ++j) {
+					pixel = readInput.nextInt();
+					imgAry[i][j] = pixel;
+				}
+			}
+			
+		}catch(IOException ioe) {
+			System.out.println(ioe);
+		}
 	}
 	
 	public int getNumRows() { return numRows; }
@@ -24,6 +53,16 @@ public class ImageProcessing {
 	
 	public int getImgArrVal(int rowIndex, int colIndex) {
 		return imgAry[rowIndex][colIndex];
+	}
+	
+	//delete this
+	public void printImg() {
+		for(int i = 0; i < numRows; ++i) {
+			for(int j = 0; j < numCols; ++j) {
+				System.out.print(imgAry[i][j] + " ");
+			}
+			System.out.println();
+		}
 	}
 
 }

@@ -13,6 +13,27 @@ public class XYCoord {
 		this.yCoordinate = yCoordinate;
 	}
 	
+	public void setXCoordinate(int xCoord) {
+		xCoordinate = xCoord;
+	}
+	
+	public void setYCoordinate(int yCoord) {
+		yCoordinate = yCoord;
+	}
+	
+	public void setPoint(int xCoord, int yCoord) {
+		xCoordinate = xCoord;
+		yCoordinate = yCoord;
+	}
+	
+	public int getXCoordinate() {
+		return xCoordinate;
+	}
+	
+	public int getYCoordinate() {
+		return yCoordinate;
+	}
+	
 	//delete this
 	public void printPoint() {
 		System.out.print("xCoordinate: " + xCoordinate +
