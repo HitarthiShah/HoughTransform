@@ -10,7 +10,14 @@ public class HoughTransform {
 	private int maximumVal;
 	private int[][] houghAry;
 	
-	public HoughTransform() {
+	public HoughTransform(ImageProcessing imgProObj) {
+		numOfRows = imgProObj.getNumRows();
+		numOfCols = imgProObj.getNumCols();
+		minimumVal = imgProObj.getMinVal();
+		maximumVal = imgProObj.getMaxVal();
+		int distance = (int)Math.sqrt(Math.pow(numOfRows, 2) + 
+									Math.pow(numOfCols, 2));
+		houghAry = new int[distance][180];
 		
 	}
 	
@@ -20,6 +27,10 @@ public class HoughTransform {
 	
 	public void determineHeader() {
 		
+	}
+	
+	public double computeT(int angle, int row, int col) {
+		return (angle - Math.atan(col/row) - (Math.PI/2));
 	}
 	
 	public int getAngleInDeg() { return angleInDegrees; }
