@@ -37,7 +37,7 @@ public class ImageProcessing {
 					imgAry[i][j] = pixel;
 				}
 			}
-			
+			readInput.close();
 		}catch(IOException ioe) {
 			System.out.println(ioe);
 		}
