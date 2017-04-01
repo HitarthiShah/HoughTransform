@@ -21,8 +21,11 @@ public class HoughTransform {
 		
 	}
 	
-	public void computeDistance() {
-		
+	public double computeDistance(int angle, int distance, 
+										int row, int col) {
+		double t = computeT(angle,row,col);
+		return Math.sqrt((Math.pow(row, 2)) + 
+				(Math.pow(col, 2))) * (Math.cos(t));
 	}
 	
 	public void determineHeader() {

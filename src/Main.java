@@ -13,6 +13,7 @@ public class Main {
 		ImageProcessing imageProcessing = new ImageProcessing(inputFile);
 		imageProcessing.loadImage(inputFile);
 		imageProcessing.printImg();
+		HoughTransform houghTransform = new HoughTransform(imageProcessing);
 	}
 
 }
