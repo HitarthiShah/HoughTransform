@@ -12,10 +12,9 @@ public class Main {
 			   outputFile = args[1];
 		ImageProcessing imageProcessing = new ImageProcessing(inputFile);
 		imageProcessing.loadImage(inputFile);
-		imageProcessing.printImg();
 		HoughTransform houghTransform = new HoughTransform(imageProcessing);
 		houghTransform.executeHoughTransform(imageProcessing);
-		houghTransform.printHoughArr(outputFile);
+		houghTransform.prettyPrint(outputFile);
 	}
 
 }

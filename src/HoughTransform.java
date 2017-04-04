@@ -16,10 +16,10 @@ public class HoughTransform {
 	public HoughTransform(ImageProcessing imgProObj) {
 		numOfRows = 180;
 		numOfCols = (int)Math.sqrt(Math.pow(imgProObj.getNumRows(), 2) + 
-				    Math.pow(numOfCols, 2));
+				    Math.pow(imgProObj.getNumCols(), 2));
 		minimumVal = imgProObj.getMinVal();
 		maximumVal = imgProObj.getMaxVal();
-		System.out.println("This is the numCols " + numOfCols);
+		System.out.println("This is numOfCols " + numOfCols);
 		houghAry = new int[180][numOfCols];
 		angleInDegrees = 0;
 		angleInRadians = 0.0;
@@ -33,13 +33,22 @@ public class HoughTransform {
 				(Math.pow(pt.getYCoordinate(), 2))) * (Math.cos(t));
 	}
 	
-	public void determineHeader() {
-		
-	}
-	
 	public double computeT(double radians, XYCoord pt) {
 		return (radians - Math.atan(pt.getYCoordinate()/pt.getXCoordinate())
 				- (Math.PI/2));
+	}
+	
+	public void determineHeader() {
+		 minimumVal = 9999;
+		 maximumVal = -9999;
+		for(int i = 0; i < numOfRows; ++i) {
+			for(int j = 0; j < numOfCols; ++j) {
+				if(houghAry[i][j] < minimumVal) 
+					minimumVal = houghAry[i][j];
+				if(houghAry[i][j] > maximumVal)
+					maximumVal = houghAry[i][j];
+			}//for columns
+		}//for rows
 	}
 	
 	public int getAngleInDeg() { return angleInDegrees; }
@@ -70,6 +79,7 @@ public class HoughTransform {
 					while(angleInDegrees < 179) {
 						angleInRadians = (angleInDegrees) * (Math.PI/180);
 						distance = Math.abs((int)computeDistance(angleInRadians,point));
+						System.out.println("This is the distance " + distance);
 						houghAry[angleInDegrees][distance]++;
 						angleInDegrees++;
 					}
@@ -79,7 +89,7 @@ public class HoughTransform {
 		}//for rows	
 	}
 	
-	public void printHoughArr(String outputFile) {
+	public void prettyPrint(String outputFile) {
 		try {
 			PrintWriter printToFile = new PrintWriter(new File(outputFile));
 			for(int row = 0; row < numOfRows; ++row) {
