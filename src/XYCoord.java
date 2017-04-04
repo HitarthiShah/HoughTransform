@@ -21,7 +21,7 @@ public class XYCoord {
 		yCoordinate = yCoord;
 	}
 	
-	public void setPoint(int xCoord, int yCoord) {
+	public void setCoord(int xCoord, int yCoord) {
 		xCoordinate = xCoord;
 		yCoordinate = yCoord;
 	}

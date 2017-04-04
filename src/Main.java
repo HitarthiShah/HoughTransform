@@ -14,6 +14,8 @@ public class Main {
 		imageProcessing.loadImage(inputFile);
 		imageProcessing.printImg();
 		HoughTransform houghTransform = new HoughTransform(imageProcessing);
+		houghTransform.executeHoughTransform(imageProcessing);
+		houghTransform.printHoughArr(outputFile);
 	}
 
 }
