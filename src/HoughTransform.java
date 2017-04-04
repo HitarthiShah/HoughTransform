@@ -94,9 +94,11 @@ public class HoughTransform {
 			PrintWriter printToFile = new PrintWriter(new File(outputFile));
 			for(int row = 0; row < numOfRows; ++row) {
 				for(int col = 0; col < numOfCols; ++col) {
-					if(houghAry[row][col] > 0) {
+					if(houghAry[row][col] > 0 && houghAry[row][col] < 10) 
 						printToFile.print(houghAry[row][col] + " ");
-					} else 
+					else if(houghAry[row][col] > 9)
+						printToFile.print(houghAry[row][col] + "  ");
+					 else 
 						printToFile.print(" ");
 				}
 				printToFile.println();
